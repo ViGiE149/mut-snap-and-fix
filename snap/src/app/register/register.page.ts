@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
 
   Reg(){
     
-
     this.email= ((document.getElementById("email")as HTMLInputElement).value);
     this.password= ((document.getElementById("password")as HTMLInputElement).value);
 
@@ -39,6 +38,7 @@ export class RegisterPage implements OnInit {
    
   });
 
+   
 
 
     
