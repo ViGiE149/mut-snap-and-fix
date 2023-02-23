@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Report 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  <ion-label>After capturing image, click done and choose g-mail to finalize report.</ion-label>
+</ion-card>
+ <div class="centerImg">
+  <ion-card>
+    <img [src]="newImage" alt="capturedimage of the demage">
+  </ion-card>
+</div>
+
+  <ion-item>
+    <ion-textarea placeholder="DESCRIBE THE DAMAGE IN DETAIL AND THE LOCATION OF THE INCIDENT" [(ngModel)]="bodyData" [autoGrow]="true"
+      value="">
+    </ion-textarea>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-select placeholder="Select Campus"[(ngModel)]="SelectedOption">
+        <ion-select-option value="Main Campus">Main Campus</ion-select-option>
+        <ion-select-option value="North Campus">North Campus</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-select placeholder="Select Department"[(ngModel)]="SelectedOption2">
+        <ion-select-option value="electrical">Electrical</ion-select-option>
+        <ion-select-option value="plumbing">Plumbing</ion-select-option>
+        <ion-select-option value="capentry">capentry</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+  <div class="block">
+  <ion-fab>
+    <ion-fab-button  color="secondary" (click)="takePicture()">
+      <div class="block2">
+   <ion-icon size="large" name="camera"></ion-icon>
+  </div>
+  </ion-fab-button>
+</ion-fab>
+</div>
+  <ion-button expand="block" color="secondary" (click)="done()">DONE</ion-button>
+
+</ion-content>

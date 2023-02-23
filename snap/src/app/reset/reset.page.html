@@ -1,0 +1,29 @@
+<ion-header class="title">
+  <ion-toolbar>
+    <ion-title>RESET PASSWORD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      
+      <ion-content>
+      <div class="container">
+       <div class="center">
+        <img src="assets/icon.png" alt="icon">
+      </div>
+      
+          <ion-item fill="solid">
+              <ion-icon name="person"></ion-icon>
+              <ion-input id="email" placeholder="Email" ></ion-input>
+              <ion-note slot="helper">Enter a valid email</ion-note>
+              <ion-note slot="error">Invalid email</ion-note>
+            </ion-item>
+      
+            <ion-button expand="block" color= "secondary" (click)="reset()">RESET PASSWORD</ion-button>
+            <ion-button expand="block" color= "secondary" routerLink="/register">SIGN UP</ion-button>
+            <ion-button expand="block" color= "secondary" routerLink="/login">SIGN IN</ion-button>
+          
+        </div>
+      </ion-content>
+
+</ion-content>

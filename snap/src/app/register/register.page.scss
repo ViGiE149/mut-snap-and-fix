@@ -1,0 +1,30 @@
+space{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+.title{
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
+ion-content{
+
+    --ion-background-color:white;
+  }
+  ion-toolbar{
+    --background: white;
+  }
+  ion-title{
+    color: black;
+  }
+  ion-item {
+    --ion-item-background: white;
+  }
+  .center{
+    text-align: center;
+}.container{
+
+  margin-left:20px ;
+  margin-right: 20px;
+}

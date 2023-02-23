@@ -1,0 +1,7 @@
+{
+  "name": "snap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
