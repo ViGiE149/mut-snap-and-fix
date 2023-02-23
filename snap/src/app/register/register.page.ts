@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  email: any;
-  password: any;
+  email="";
+  password="";
 
   constructor(private router:Router, private auth:AngularFireAuth) { }
 
@@ -18,23 +18,26 @@ export class RegisterPage implements OnInit {
   }
 
   Reg(){
-    this.email=((document.getElementById("email")as HTMLInputElement).value);
-    this.password=((document.getElementById("password")as HTMLInputElement).value);
+    
 
+    this.email= ((document.getElementById("email")as HTMLInputElement).value);
+    this.password= ((document.getElementById("password")as HTMLInputElement).value);
+
+    
     this.auth.createUserWithEmailAndPassword(this.email, this.password)
-    .then(userCredential => {
-      // Signed in 
-      const user = userCredential.user;
-      window.alert("Registerd")
-      this.router.navigateByUrl("/login");
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      window.alert(errorMessage);
-      // ..
-    });
+  .then(userCredential => { 
+    
+    const user = userCredential.user;
+    this.router.navigateByUrl("/login");
+    // ...
+  })
+  .catch((error) => {
+    
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    window.alert(errorMessage);
+   
+  });
 
 
 

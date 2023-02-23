@@ -55,7 +55,7 @@ export class HomePage {
   
     attachments: [`base64:image.jpeg//${this.imageInfor}`],
     subject: 'Demage Report',
-    body:"campus :"+this.SelectedOption+"."+"\n"+"Department :"+this.SelectedOption2+"."+"\n"+this.bodyData,
+    body:"campus :"+this.SelectedOption+"."+"\n"+"Department :"+this.SelectedOption2+"."+"\n"+"\n"+this.bodyData,
     isHtml: false
   }
   
@@ -72,6 +72,10 @@ export class HomePage {
    done(){
 
     this.validate();
+    this.newImage="assets/icon.png";  
+    this.bodyData="";
+    this.SelectedOption="";
+    this.SelectedOption2="";
 }
 
 
