@@ -12,7 +12,10 @@
 </ion-card>
  <div class="centerImg">
   <ion-card>
-    <img [src]="newImage" alt="capturedimage of the demage">
+    <img [src]="newImage" alt="first captured image of the demage">
+  </ion-card>
+  <ion-card>
+    <img [src]="newImage2" alt="second captured image of the demage">
   </ion-card>
 </div>
 
@@ -44,6 +47,7 @@
   
   <div class="block">
   <ion-fab>
+    <ion-badge>{{counter}}</ion-badge>
     <ion-fab-button  color="secondary" (click)="takePicture()">
       <div class="block2">
    <ion-icon size="large" name="camera"></ion-icon> 
@@ -52,5 +56,5 @@
 </ion-fab>
 </div>
   <ion-button expand="block" color="secondary" (click)="done()">DONE</ion-button>
-
+  <ion-button expand="block" color="secondary" (click)="save()">save</ion-button>
 </ion-content>

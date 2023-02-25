@@ -11,11 +11,11 @@ import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,AngularFireModule.initializeApp(environment.firebaseConfig),AngularFirestoreModule,AngularFireAuthModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },EmailComposer],
   bootstrap: [AppComponent],
 })

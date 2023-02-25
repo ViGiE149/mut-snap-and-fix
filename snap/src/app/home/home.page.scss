@@ -26,10 +26,14 @@
   text-decoration: none;
 }
 .centerImg{
+  display:flex;
+  justify-content: center;
+  justify-items: center;align-items: center;
   text-align: center;
   width: 100%;
   height: 250px;
   margin-top:20px;
+  
 }
 img{
   width: 300px;
@@ -78,6 +82,9 @@ ion-item{
   margin-bottom: 5px;
   --ion-item-background:white;
   color: black;
+}
+ion-badge{
+  height: 20px;
 }
 
 
