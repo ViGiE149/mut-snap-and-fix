@@ -88,7 +88,8 @@ department: this.SelectedOption2,
 description:this.bodyData,
 date: todaysDate,
 imageData:this.imageInfor,
-imageData2:this.imageInfor2
+imageData2:this.imageInfor2,
+status:"demaged"
 
 })
 .then((docRef) => {
