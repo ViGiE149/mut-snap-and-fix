@@ -62,12 +62,14 @@ ion-icon{
 
 width: 100%;
   margin-bottom: 70px;
+
 }
 ion-fab{
   display: flex;
   width: 100%;
   flex-direction: row;
   justify-content: center;
+
 }
 ion-list{
   --ion-item-background:white;
@@ -85,6 +87,9 @@ ion-item{
 }
 ion-badge{
   height: 20px;
+}
+ion-label{
+margin-left: 3px;
 }
 
 

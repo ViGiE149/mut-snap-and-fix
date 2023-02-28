@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginPage implements OnInit {
   email: any;
   password: any;
 
-  constructor(private router:Router, private auth:AngularFireAuth) { }
+  constructor(private router:Router, private auth:AngularFireAuth,private toastController: ToastController) { }
 
   ngOnInit() {
   }
@@ -34,7 +36,7 @@ export class LoginPage implements OnInit {
     
     const user = userCredential.user;
     this.router.navigateByUrl("/home");
-    // ...
+    this.presentToast()
   })
   .catch((error) => {
     
@@ -43,6 +45,17 @@ export class LoginPage implements OnInit {
     window.alert(errorMessage);
    
   });
+  }
+
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'SIGNED IN!',
+      duration: 1500,
+      position: 'top'
+    });
+
+    await toast.present();
   }
 
 }
