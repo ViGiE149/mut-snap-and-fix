@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" >
+      <ion-button expand="block">
+        <ion-icon name="arrow-back" routerLink="/dashboard-Admin"></ion-icon>
+      </ion-button>
+
+      
+    </ion-buttons>
+    <ion-title>reported</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+<div class="cent">
+  <table class="bordered">
+    <thead class="color">
+      <tr>
+        <th>Image 1</th>
+        <th>Image 2</th>
+        <th>ID</th>
+        <th>STATUS</th>
+        <th>CAMPUS</th>
+        <th>department</th>
+        <th>DATE</th>
+        <th>DESCRIPTION</th>
+        <th>CHANGE STATUS</th>
+      </tr>
+    </thead>
+    <tbody class="body">
+      <tr *ngFor="let data of damageData">
+        <td class="image-cell"><img src="{{ data.imageUrl }}" alt="Damage Image 1"></td> 
+        <td class="image-cell"><img src="{{ data.imageUrl2 }}" alt="Damage Image 2"></td>
+        <td>{{ data.id }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ data.campus }}</td>
+        <td>{{ data.department }}</td>
+        <td>{{ data.date }}</td>
+        
+        <td><ion-button  >description</ion-button></td>
+        
+        <td><ion-button (click)="makeInProgress(data.id)" >In Progress</ion-button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  
+</ion-content>

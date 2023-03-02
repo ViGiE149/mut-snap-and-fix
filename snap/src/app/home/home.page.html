@@ -18,12 +18,14 @@
     <img [src]="newImage2" alt="second captured image of the demage">
   </ion-card>
 </div>
-
+<fieldset>
+  <legend>description</legend>
   <ion-item>
     <ion-textarea placeholder="DESCRIBE THE DAMAGE IN DETAIL AND THE LOCATION OF THE INCIDENT" [(ngModel)]="bodyData" [autoGrow]="true"
       value="">
     </ion-textarea>
   </ion-item>
+</fieldset>
 
   <ion-list>
     <ion-item class="ion-item-color">

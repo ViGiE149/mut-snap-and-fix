@@ -1,0 +1,56 @@
+.damage-table {
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .damage-table th, .damage-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .damage-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .damage-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .image-cell {
+    text-align: right;
+  }
+  
+  .image-cell img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .bordered {
+    border-collapse: collapse;
+    border: 1px solid black;
+    align-content: center;
+  }
+
+  .bordered td,
+.bordered th {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.color{
+    background-color:deepskyblue;
+}
+
+.body{
+    background-color:white;
+}
+.cent{
+    text-align: center;
+    align-content: center;
+    
+}
+table {
+    margin: 0 auto;
+    width: 70%;
+  }

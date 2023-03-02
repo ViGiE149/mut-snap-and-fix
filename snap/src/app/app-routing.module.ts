@@ -22,7 +22,23 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
+  },  {
+    path: 'pending',
+    loadChildren: () => import('./pending/pending.module').then( m => m.PendingPageModule)
   },
+  {
+    path: 'reported',
+    loadChildren: () => import('./reported/reported.module').then( m => m.ReportedPageModule)
+  },
+  {
+    path: 'completed',
+    loadChildren: () => import('./completed/completed.module').then( m => m.CompletedPageModule)
+  },
+  {
+    path: 'dashboard-admin',
+    loadChildren: () => import('./dashboard-admin/dashboard-admin.module').then( m => m.DashboardAdminPageModule)
+  },
+
 ];
 
 @NgModule({

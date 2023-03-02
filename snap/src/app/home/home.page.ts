@@ -58,7 +58,7 @@ export class HomePage {
   async takePicture() {
     if (this.counter == 0) {
       const image = await Camera.getPhoto({
-        quality: 90,
+        quality: 50,
         allowEditing: false,
         resultType: CameraResultType.Base64,
         source: CameraSource.Camera,
@@ -79,7 +79,7 @@ export class HomePage {
 
     } else if (this.counter == 1) {
       const image2 = await Camera.getPhoto({
-        quality: 90,
+        quality: 50,
         allowEditing: false,
         resultType: CameraResultType.Base64,
         source: CameraSource.Camera,
@@ -134,26 +134,26 @@ export class HomePage {
 
 
       this.db
-        .collection('demageData')
+        .collection('damageData')
         .add({
           id: this.id,
           campus: this.SelectedOption,
           department: this.SelectedOption2,
           description: this.bodyData,
           date: todaysDate,
-          imageData: this.imageUrl,
-          imageData2: this.imageUrl2,
+          imageUrl: this.imageUrl,
+          imageUrl2: this.imageUrl2,
           status: 'demaged',
         })
         .then((docRef) => {
           console.log('Document written with ID: ', docRef.id);
-          alert('uploaded ' + docRef.id +"\n"+"complete action by clicking on the gmail app and send");
+          alert('uploaded ' + docRef.id +"\n"+"complete action by clicking send");
 
           let email = {
             to: 'vgwala149@gmail.com',
 
             attachments: [`base64:image.jpeg//${this.imageInfor}`],
-            subject: 'Demage Report',
+            subject: 'Damage Report',
             body:
               'campus :' +
               this.SelectedOption +
@@ -165,15 +165,12 @@ export class HomePage {
               '\n' +
               '\n' +
               this.bodyData,
+              app:'gmail',
             isHtml: false,
           };
 
           // Send a text message using default options
-          const options = {
-            app: 'gmail'
-          };
-          
-          this.emailComposer.open(email, options);
+        this.emailComposer.open(email);
 
 
           this.imageInfor="";
