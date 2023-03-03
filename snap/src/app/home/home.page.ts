@@ -9,6 +9,8 @@ import { LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -27,8 +29,10 @@ export class HomePage {
   imageUrl: any;
   imageUrl2: any;
   id ="";
+  menuType: string = 'overlay';
 
   date = new Date();
+  email: any;
 
   
   constructor(
@@ -39,8 +43,12 @@ export class HomePage {
     private loadingController: LoadingController,
     private auth:AngularFireAuth,
     private router:Router,
-    private toastController: ToastController
-  ) {}
+    private toastController: ToastController,
+     public navCtrl: NavController, 
+     private route: ActivatedRoute
+  ) {
+    this.ionViewWillEnter()
+  }
 
   async uploadImage(file: string) {
     const fileName = Date.now().toString();
@@ -54,6 +62,21 @@ export class HomePage {
 
     return snapshot.ref.getDownloadURL();
   }
+
+
+
+
+ionViewWillEnter() {
+    this.route.queryParams.subscribe(params => {
+      if (params && params['data']) {
+   
+        this.email=params['data'];
+       localStorage.setItem('email', this.email);
+    
+      }
+    });
+  }
+
 
   async takePicture() {
     if (this.counter == 0) {
@@ -131,7 +154,11 @@ export class HomePage {
 
 
 
-
+      const loader = await this.loadingController.create({
+        message:  '',
+        cssClass: 'custom-loader-class'
+      });
+      await loader.present();
 
       this.db
         .collection('damageData')
@@ -143,9 +170,11 @@ export class HomePage {
           date: todaysDate,
           imageUrl: this.imageUrl,
           imageUrl2: this.imageUrl2,
-          status: 'demaged',
+          status: 'damaged',
+          email: this.email
         })
         .then((docRef) => {
+          loader.dismiss();
           console.log('Document written with ID: ', docRef.id);
           alert('uploaded ' + docRef.id +"\n"+"complete action by clicking send");
 
@@ -188,6 +217,7 @@ export class HomePage {
        
         })
         .catch((error) => {
+          loader.dismiss();
           console.error('Error adding document: ', error);
           alert('faild : ' + error);
         });
@@ -199,18 +229,18 @@ export class HomePage {
   }
 
   logout(){
-    this.auth.signOut().then(() => {
-      this.router.navigateByUrl("/login");
-      this.presentToast()
+   
+
+   this.presentConfirmationAlert() 
 
 
-    }).catch((error) => {
+
     
-    });
     
   }
 
 
+  
 
   async presentToast() {
     const toast = await this.toastController.create({
@@ -223,6 +253,41 @@ export class HomePage {
     await toast.present();
   }
 
+
+  async presentConfirmationAlert() {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      message: 'Are you sure you want to SIGN OUT?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirmation canceled');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+           
+            
+            this.auth.signOut().then(() => {
+              this.router.navigateByUrl("/login");
+              this.presentToast()
+        
+        
+            }).catch((error) => {
+            
+            });
+
+
+
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 
 
 }

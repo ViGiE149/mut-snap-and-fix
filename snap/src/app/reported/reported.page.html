@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-buttons slot="start" >
+    <ion-buttons slot="start" routerLink="/dashboard-admin">
       <ion-button expand="block">
         <ion-icon name="arrow-back" routerLink="/dashboard-Admin"></ion-icon>
       </ion-button>
@@ -40,7 +40,7 @@
         <td>{{ data.department }}</td>
         <td>{{ data.date }}</td>
         
-        <td><ion-button  >description</ion-button></td>
+        <td><textarea readonly>{{ data.description }}</textarea></td>
         
         <td><ion-button (click)="makeInProgress(data.id)" >In Progress</ion-button></td>
       </tr>

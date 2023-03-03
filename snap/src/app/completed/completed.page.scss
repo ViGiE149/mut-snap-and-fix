@@ -2,6 +2,9 @@
     border-collapse: collapse;
     margin: 20px 0;
   }
+  *{
+    color:black;
+  }
   
   .damage-table th, .damage-table td {
     border: 1px solid #ccc;
@@ -24,6 +27,7 @@
   .image-cell img {
     max-width: 100px;
     max-height: 100px;
+  
   }
 
   .bordered {
@@ -54,3 +58,12 @@ table {
     margin: 0 auto;
     width: 70%;
   }
+  ion-content{
+
+    --ion-background-color:white;
+  }
+
+
+
+  
+  

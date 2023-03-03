@@ -24,7 +24,7 @@ export class ReportedPage implements OnInit {
   }
 
   getDamageData() {
-    this.db.collection('damageData', ref => ref.where('status', '==', 'demaged'))
+    this.db.collection('damageData', ref => ref.where('status', '==', 'damaged'))
       .valueChanges()
       .subscribe(data =>{
         

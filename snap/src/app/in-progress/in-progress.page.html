@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-button routerLink="/home" expand="block">
+        <ion-icon name="arrow-back" ></ion-icon>
+      </ion-button>
+
+      
+    </ion-buttons>
+    <ion-title>in Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+    <ion-card *ngFor="let data of pendingData">
+    <div class="imgCenter">
+      <ion-card><img src="{{ data.imageUrl }}" alt="Damage Image 1"></ion-card>
+    </div>
+    <div class="textMargin">
+     <u><h1>{{ data.status }}</h1></u>
+     <ion-card class="x"><textarea readonly>{{ data.description}}</textarea> </ion-card>
+    </div>
+    </ion-card>
+  
+
+
+</ion-content>

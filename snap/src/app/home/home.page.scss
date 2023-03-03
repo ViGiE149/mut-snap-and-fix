@@ -61,13 +61,14 @@ ion-icon{
 .block{
 
 width: 100%;
-  margin-bottom: 70px;
+margin-bottom: 80px;
+text-align: center;
 
 }
 ion-fab{
   display: flex;
   width: 100%;
-  flex-direction: row;
+ margin-left: -.7%;
   justify-content: center;
 
 }
@@ -99,8 +100,38 @@ legend{
 
 }
 
+ion-footer {
+  --background-color: transparent;
+}
+ion-tab-bar{
+  --background: var(--ion-color-secondary);
+  --border-radius: 20px;
+}
+ion-menu::part(backdrop) {
+  background-color: rgba(255, 0, 255, 0.5);
+}
 
+ion-menu::part(container) {
+  border-radius: 0 20px 20px 0;
 
+  box-shadow: 4px 0px 16px rgba(255, 0, 255, 0.18);
+}
+.centerTitle{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+.secondary{
+  border-radius: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+.custom-loader-class {
+  --background: white;
+  --border-radius: 20px;
+  --color: black;
+}
 
 
 

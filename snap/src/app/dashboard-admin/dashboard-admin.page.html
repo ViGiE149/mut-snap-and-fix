@@ -1,12 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-button expand="block">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-
-      
-    </ion-buttons>
+ 
     <ion-title>dashboardAdmin</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -30,15 +24,14 @@
     </ion-col>
 
 
-     <ion-col size="6">
-        <ion-card routerLink="/reported" color="danger">
-            <ion-icon name="mail-unread-outline"></ion-icon>
-          <ion-text>
-            <h2>Reports</h2>
-          </ion-text>
-        </ion-card>
-      </ion-col>
-      
+    <ion-col size="6">
+      <ion-card color="primary" routerLink="/reported">
+          <ion-icon name="mail-unread-outline"></ion-icon>
+        <ion-text>
+          <h2>Reports</h2>
+        </ion-text>
+      </ion-card>
+    </ion-col>
         <ion-col size="6">
             <ion-card color="success" routerLink="/completed">
                 <ion-icon name="checkmark-done-outline"></ion-icon>
@@ -48,7 +41,16 @@
             </ion-card>
           </ion-col>
 
+          <ion-col size="6">
+            <ion-card color="danger" routerLink="/login">
+              <ion-icon name="log-out-outline"></ion-icon>
+              <ion-text>
+                <h2>Sign Out</h2>
+              </ion-text>
+            </ion-card>
+          </ion-col>
+
+        
   </ion-row>
 </ion-grid>
 </ion-content>
-

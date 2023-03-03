@@ -38,6 +38,18 @@ const routes: Routes = [
     path: 'dashboard-admin',
     loadChildren: () => import('./dashboard-admin/dashboard-admin.module').then( m => m.DashboardAdminPageModule)
   },
+  {
+    path: 'my-reports',
+    loadChildren: () => import('./my-reports/my-reports.module').then( m => m.MyReportsPageModule)
+  },
+  {
+    path: 'attended',
+    loadChildren: () => import('./attended/attended.module').then( m => m.AttendedPageModule)
+  },
+  {
+    path: 'in-progress',
+    loadChildren: () => import('./in-progress/in-progress.module').then( m => m.InProgressPageModule)
+  },
 
 ];
 
