@@ -18,11 +18,10 @@ export class ResetPage implements OnInit {
 
 
   reset(){
-    this.email=((document.getElementById("email") as HTMLInputElement).value);
-  
-    this.auth.
-    sendPasswordResetEmail(this.email)
-    .then((userCredential) => {
+   
+    this.email=((document.getElementById("email")as HTMLInputElement).value);
+    this.auth.sendPasswordResetEmail(this.email)
+    .then(userCredential => {
   
       window.alert("Email sent with link to reset your password");
       this.router.navigateByUrl("/login");

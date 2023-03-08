@@ -21,38 +21,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   goToDestinationPage(data:any) {
     this.navCtrl.navigateForward('/home', { queryParams: { data: data } });
   }
   
-  
-  
 
-
-  
-
-  validate(){
-
-
-
-  }
 
   async log(){
     this.email=((document.getElementById("email")as HTMLInputElement).value);

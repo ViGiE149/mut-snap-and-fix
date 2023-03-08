@@ -181,7 +181,7 @@ ionViewWillEnter() {
           let email = {
             to: 'vgwala149@gmail.com',
 
-            attachments: [`base64:image.jpeg//${this.imageInfor}`],
+            attachments: [this.newImage,this.newImage2],
             subject: 'Damage Report',
             body:
               'campus :' +
@@ -230,13 +230,8 @@ ionViewWillEnter() {
 
   logout(){
    
-
    this.presentConfirmationAlert() 
 
-
-
-    
-    
   }
 
 

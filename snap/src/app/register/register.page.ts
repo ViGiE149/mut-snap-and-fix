@@ -11,8 +11,8 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
-  email="";
-  password="";
+  email :any;
+  password :any;
 
   constructor( private loadingController: LoadingController,private router:Router, private auth:AngularFireAuth,private toastController: ToastController) { }
 
@@ -21,19 +21,18 @@ export class RegisterPage implements OnInit {
 
  async Reg(){
     
-    this.email= ((document.getElementById("email")as HTMLInputElement).value);
-    this.password= ((document.getElementById("password")as HTMLInputElement).value);
+  this.email=((document.getElementById("email")as HTMLInputElement).value);
+  this.password=((document.getElementById("password")as HTMLInputElement).value);
     const loader = await this.loadingController.create({
       message: 'Signing up',
       cssClass: 'custom-loader-class'
     });
     await loader.present();
  
-    
-    this.auth.createUserWithEmailAndPassword(this.email, this.password)
+  this.auth.createUserWithEmailAndPassword(this.email, this.password)
   .then(userCredential => { 
     loader.dismiss();
-   
+
     this.router.navigateByUrl("/login");
     this.presentToast()
     // ...
@@ -45,8 +44,6 @@ export class RegisterPage implements OnInit {
     window.alert(errorMessage);
    
   });
-
-   
 
 
     
