@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EmailComposer, EmailComposerOptions,} from '@awesome-cordova-plugins/email-composer/ngx';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavParams } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Console } from 'console';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -9,8 +9,9 @@ import { LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Params} from '@angular/router';
 import { NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -67,10 +68,11 @@ export class HomePage {
 
 
 ionViewWillEnter() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params: Params)  => {
       if (params && params['data']) {
    
         this.email=params['data'];
+       
        localStorage.setItem('email', this.email);
     
       }
@@ -132,8 +134,9 @@ ionViewWillEnter() {
       const alert = await this.alertController.create({
         header: 'Alert',
         subHeader: 'Important message',
+        cssClass: 'my-custom-alert',
         message:
-          'capture 2 images of the damage first , fill in the description,choose campus and choose department!!!"!',
+          'capture 2 images of the damage, fill in the description,choose campus and choose department!!!"!',
         buttons: ['OK'],
       });
 
@@ -180,8 +183,10 @@ ionViewWillEnter() {
 
           let email = {
             to: 'vgwala149@gmail.com',
-
-            attachments: [this.newImage,this.newImage2],
+            attachments: [
+              this.newImage,
+              this.newImage2
+            ],
             subject: 'Damage Report',
             body:
               'campus :' +
@@ -194,7 +199,7 @@ ionViewWillEnter() {
               '\n' +
               '\n' +
               this.bodyData,
-              app:'gmail',
+            app: 'gmail',
             isHtml: false,
           };
 
@@ -257,7 +262,7 @@ ionViewWillEnter() {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
+         cssClass: 'my-custom-alert',
           handler: () => {
             console.log('Confirmation canceled');
           }

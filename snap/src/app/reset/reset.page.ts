@@ -19,7 +19,7 @@ export class ResetPage implements OnInit {
 
   reset(){
    
-    this.email=((document.getElementById("email")as HTMLInputElement).value);
+    this.email = ((document.getElementById("email")as HTMLInputElement).value);
     this.auth.sendPasswordResetEmail(this.email)
     .then(userCredential => {
   
