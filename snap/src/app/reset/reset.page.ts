@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ResetPage implements OnInit {
 
-  email:any;
+  email = "";
 
   constructor(private router:Router, private auth:AngularFireAuth) { }
 
@@ -19,7 +19,7 @@ export class ResetPage implements OnInit {
 
   reset(){
    
-    this.email = ((document.getElementById("email")as HTMLInputElement).value);
+   
     this.auth.sendPasswordResetEmail(this.email)
     .then(userCredential => {
   

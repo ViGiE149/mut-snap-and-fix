@@ -183,10 +183,7 @@ ionViewWillEnter() {
 
           let email = {
             to: 'vgwala149@gmail.com',
-            attachments: [
-              this.newImage,
-              this.newImage2
-            ],
+            attachments: [`base64:image.jpeg//${this.imageInfor}`],
             subject: 'Damage Report',
             body:
               'campus :' +

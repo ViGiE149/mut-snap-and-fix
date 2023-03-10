@@ -12,8 +12,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
-  email : any;
-  password : any;
+  email = "";
+  password = "";
 
   constructor(private alertController: AlertController, private loadingController: LoadingController,
      private router: Router, private auth: AngularFireAuth, private toastController: ToastController) { }
@@ -23,8 +23,7 @@ export class RegisterPage implements OnInit {
 
   async Reg() {
 
-    this.email = ((document.getElementById("email") as HTMLInputElement).value);
-    this.password = ((document.getElementById("password") as HTMLInputElement).value);
+    
     const loader = await this.loadingController.create({
       message: 'Signing up',
       cssClass: 'custom-loader-class'
