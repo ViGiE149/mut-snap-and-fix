@@ -13,8 +13,8 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  email: any;
-  password: any;
+  email = "";
+  password = "";
 
   constructor(private loadingController: LoadingController, public navCtrl: NavController,
      private router: Router, private auth: AngularFireAuth, private toastController: ToastController) { }

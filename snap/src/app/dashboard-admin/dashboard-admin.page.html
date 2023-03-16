@@ -3,6 +3,7 @@
  
     <ion-title>dashboardAdmin</ion-title>
   </ion-toolbar>
+   <ion-button color="secondary" (click)="logOut()">SIGN OUT</ion-button>
 </ion-header>
 
 <ion-content>
@@ -18,7 +19,7 @@
       <ion-card color="light" routerLink="/pending" >
         <ion-icon name="list"></ion-icon>
         <ion-text>
-          <h2>Pending</h2>
+          <h2>Pending Incidents</h2>
         </ion-text>
       </ion-card>
     </ion-col>
@@ -28,27 +29,21 @@
       <ion-card color="primary" routerLink="/reported">
           <ion-icon name="mail-unread-outline"></ion-icon>
         <ion-text>
-          <h2>Reports</h2>
+          <h2>Reported Incidents</h2>
         </ion-text>
       </ion-card>
     </ion-col>
-        <ion-col size="6">
+        <ion-col size="12" >
+          <div class="centerCol">
             <ion-card color="success" routerLink="/completed">
                 <ion-icon name="checkmark-done-outline"></ion-icon>
               <ion-text>
-                <h2>completed</h2>
+                <h2>Completed Incidents</h2>
               </ion-text>
             </ion-card>
+          </div>
           </ion-col>
 
-          <ion-col size="6">
-            <ion-card color="danger" routerLink="/login">
-              <ion-icon name="log-out-outline"></ion-icon>
-              <ion-text>
-                <h2>Sign Out</h2>
-              </ion-text>
-            </ion-card>
-          </ion-col>
 
         
   </ion-row>

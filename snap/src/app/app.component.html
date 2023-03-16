@@ -11,8 +11,8 @@
       <ion-content class="ion-padding">
         <ion-list *ngFor="let pages of navigate">
           <ion-menu-toggle auto-hide="true">
-            <ion-item [routerLink]="pages.url" routerDirection="forward">
-                <ion-icon [name]="pages.icon" slot="start"></ion-icon>
+            <ion-item [routerLink]="pages.url"     routerDirection="forward" (click)="pages.click && pages.click()">
+                <ion-icon [name]="pages.icon" slot="start" ></ion-icon>
                    {{pages.title}} 
             </ion-item>
           </ion-menu-toggle>
