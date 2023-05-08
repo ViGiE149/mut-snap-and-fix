@@ -98,7 +98,7 @@ ionViewWillEnter() {
           message:  'processing image...',
         });
         await loader.present();
-      this.imageUrl = await this.uploadImage(this.imageInfor);
+
       loader.dismiss();
 
 
@@ -118,7 +118,7 @@ ionViewWillEnter() {
           message: 'processing image...',
         });
         await loader.present();
-      this.imageUrl2 = await this.uploadImage(this.imageInfor2);
+   
       loader.dismiss();
     }
   }
@@ -162,6 +162,11 @@ ionViewWillEnter() {
         cssClass: 'custom-loader-class'
       });
       await loader.present();
+
+      this.imageUrl = await this.uploadImage(this.imageInfor);
+      await this.imageUrl;
+      this.imageUrl2 = await this.uploadImage(this.imageInfor2);
+      await this.imageUrl2;
 
       this.db
         .collection('damageData')
