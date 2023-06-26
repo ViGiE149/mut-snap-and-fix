@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
-import { EmailComposer, EmailComposerOptions,} from '@awesome-cordova-plugins/email-composer/ngx';
+import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { AlertController, NavParams } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Console } from 'console';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
-import { ActivatedRoute , Params} from '@angular/router';
-import { NavController } from '@ionic/angular';
-
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,26 +23,25 @@ export class HomePage {
   counter = 0;
   imageUrl: any;
   imageUrl2: any;
-  id ="";
-  menuType: string = 'overlay';
+  id = '';
+  menuType = 'overlay';
 
   date = new Date();
   email: any;
 
-  
   constructor(
     private storage: AngularFireStorage,
     private db: AngularFirestore,
     private emailComposer: EmailComposer,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private auth:AngularFireAuth,
-    private router:Router,
+    private auth: AngularFireAuth,
+    private router: Router,
     private toastController: ToastController,
-     public navCtrl: NavController, 
-     private route: ActivatedRoute
+    public navCtrl: NavController,
+    private route: ActivatedRoute
   ) {
-    this.ionViewWillEnter()
+    this.ionViewWillEnter();
   }
 
   async uploadImage(file: string) {
@@ -64,89 +57,57 @@ export class HomePage {
     return snapshot.ref.getDownloadURL();
   }
 
-
-
-
-ionViewWillEnter() {
-    this.route.queryParams.subscribe((params: Params)  => {
+  ionViewWillEnter() {
+    this.route.queryParams.subscribe((params: Params) => {
       if (params && params['data']) {
-   
-        this.email=params['data'];
-       
-       localStorage.setItem('email', this.email);
-    
+        this.email = params['data'];
+        localStorage.setItem('email', this.email);
       }
     });
   }
 
-
   async takePicture() {
-    if (this.counter == 0) {
-      const image = await Camera.getPhoto({
-        quality: 50,
-        allowEditing: false,
-        resultType: CameraResultType.Base64,
-        source: CameraSource.Camera,
-      });
+    const image = await Camera.getPhoto({
+      quality: 50,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Camera,
+    });
+
+    if (this.counter === 0) {
       this.counter++;
       this.imageInfor = image.base64String;
       this.newImage = `data:image/jpeg;base64,${image.base64String}`;
-
-
-     
-        const loader = await this.loadingController.create({
-          message:  'processing image...',
-        });
-        await loader.present();
-
-      loader.dismiss();
-
-
-    } else if (this.counter == 1) {
-      const image2 = await Camera.getPhoto({
-        quality: 50,
-        allowEditing: false,
-        resultType: CameraResultType.Base64,
-        source: CameraSource.Camera,
-      });
+    } else if (this.counter === 1) {
       this.counter++;
-      this.imageInfor2 = image2.base64String;
-      this.newImage2 = `data:image/jpeg;base64,${image2.base64String}`;
-
-
-        const loader = await this.loadingController.create({
-          message: 'processing image...',
-        });
-        await loader.present();
-   
-      loader.dismiss();
+      this.imageInfor2 = image.base64String;
+      this.newImage2 = `data:image/jpeg;base64,${image.base64String}`;
     }
   }
 
   async validate() {
     if (
-      this.newImage2 == 'assets/icon.png' ||
-      this.newImage == 'assets/icon.png' ||
-      this.bodyData == '' ||
-      this.SelectedOption2 == '' ||
-      this.SelectedOption == ''
+      this.newImage2 === 'assets/icon.png' ||
+      this.newImage === 'assets/icon.png' ||
+      this.bodyData === '' ||
+      this.SelectedOption2 === '' ||
+      this.SelectedOption === ''
     ) {
       const alert = await this.alertController.create({
         header: 'Alert',
         subHeader: 'Important message',
         cssClass: 'my-custom-alert',
-        message:
-          'capture 2 images of the damage, fill in the description,choose campus and choose department!!!"!',
+        message: 'Capture 2 images of the damage, fill in the description, choose campus and choose department!',
         buttons: ['OK'],
       });
 
       await alert.present();
     } else {
-      var day = this.date.getDate();
-      var month = this.date.getMonth();
-      var year = this.date.getFullYear();
-      var todaysDate = `${day}/${month}/${year}`;
-       
+      const day = this.date.getDate();
+      const month = this.date.getMonth();
+      const year = this.date.getFullYear();
+      const todaysDate = `${day}/${month}/${year}`;
+
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       let result = '';
       const charactersLength = characters.length;
@@ -155,18 +116,14 @@ ionViewWillEnter() {
       }
       this.id = result;
 
-
-
       const loader = await this.loadingController.create({
-        message:  '',
+        message: '|Submitting...',
         cssClass: 'custom-loader-class'
       });
       await loader.present();
 
       this.imageUrl = await this.uploadImage(this.imageInfor);
-      await this.imageUrl;
       this.imageUrl2 = await this.uploadImage(this.imageInfor2);
-      await this.imageUrl2;
 
       this.db
         .collection('damageData')
@@ -184,18 +141,18 @@ ionViewWillEnter() {
         .then((docRef) => {
           loader.dismiss();
           console.log('Document written with ID: ', docRef.id);
-          alert('uploaded ' + docRef.id +"\n"+"complete action by clicking send");
+          alert('Uploaded ' + docRef.id + '\n' + 'Complete action by clicking send');
 
-          let email = {
+          const email = {
             to: 'vgwala149@gmail.com',
             attachments: [`base64:image.jpeg//${this.imageInfor}`],
             subject: 'Damage Report',
             body:
-              'campus :' +
+              'Campus: ' +
               this.SelectedOption +
               '.' +
               '\n' +
-              'Department :' +
+              'Department: ' +
               this.SelectedOption2 +
               '.' +
               '\n' +
@@ -205,28 +162,24 @@ ionViewWillEnter() {
             isHtml: false,
           };
 
-          // Send a text message using default options
-        this.emailComposer.open(email);
+          this.emailComposer.open(email);
 
-
-          this.imageInfor="";
-          this.imageInfor2="";
+          this.imageInfor = '';
+          this.imageInfor2 = '';
           this.newImage = 'assets/icon.png';
           this.newImage2 = 'assets/icon.png';
           this.bodyData = '';
           this.SelectedOption = '';
           this.SelectedOption2 = '';
           this.counter = 0;
-          this.imageUrl="";
-          this.imageUrl2="";
-          this.id ="";
-
-       
+          this.imageUrl = '';
+          this.imageUrl2 = '';
+          this.id = '';
         })
         .catch((error) => {
           loader.dismiss();
           console.error('Error adding document: ', error);
-          alert('faild : ' + error);
+          alert('Failed: ' + error);
         });
     }
   }
@@ -235,26 +188,19 @@ ionViewWillEnter() {
     this.validate();
   }
 
-  logout(){
-   
-   this.presentConfirmationAlert() 
-
+  logout() {
+    this.presentConfirmationAlert();
   }
-
-
-  
 
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'SIGNED OUT!',
       duration: 1500,
       position: 'top',
-    
     });
 
     await toast.present();
   }
-
 
   async presentConfirmationAlert() {
     const alert = await this.alertController.create({
@@ -264,32 +210,24 @@ ionViewWillEnter() {
         {
           text: 'Cancel',
           role: 'cancel',
-         cssClass: 'my-custom-alert',
+          cssClass: 'my-custom-alert',
           handler: () => {
             console.log('Confirmation canceled');
           }
-        }, {
+        },
+        {
           text: 'Confirm',
           handler: () => {
-           
-            
             this.auth.signOut().then(() => {
               this.router.navigateByUrl("/login");
-              this.presentToast()
-        
-        
+              this.presentToast();
             }).catch((error) => {
-            
+              console.error('Sign out error: ', error);
             });
-
-
-
           }
         }
       ]
     });
     await alert.present();
   }
-
-
 }

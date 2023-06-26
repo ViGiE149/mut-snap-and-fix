@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+ <ion-toolbar color="secondary">
     <ion-buttons slot="start" routerLink="/dashboard-admin" >
       <ion-button expand="block">
         <ion-icon name="arrow-back"></ion-icon>
@@ -14,36 +14,67 @@
 <ion-content>
 
 
-  <div class="cent">
-    <table class="bordered">
-      <thead class="color">
+  <div class="container">
+    <table class="modern-table">
+      <thead>
         <tr>
           <th>Image 1</th>
           <th>Image 2</th>
-
           <th>STATUS</th>
           <th>CAMPUS</th>
-          <th>department</th>
+          <th>DEPARTMENT</th>
           <th>DATE</th>
           <th>CHANGE STATUS</th>
         </tr>
       </thead>
-      <tbody class="body">
+      <tbody>
         <tr *ngFor="let data of pendingData">
-          <td class="image-cell"><img src="{{ data.imageUrl }}" alt="Damage Image 1"></td> 
+          <td class="image-cell"><img src="{{ data.imageUrl }}" alt="Damage Image 1"></td>
           <td class="image-cell"><img src="{{ data.imageUrl2 }}" alt="Damage Image 2"></td>
-        
           <td>{{ data.status }}</td>
           <td>{{ data.campus }}</td>
           <td>{{ data.department }}</td>
           <td>{{ data.date }}</td>
-          <td><ion-button (click)="makeItComplete(data.id)">completed</ion-button></td>
-
+          <td><ion-button (click)="makeItComplete(data.id)">Completed</ion-button></td>
         </tr>
       </tbody>
     </table>
   </div>
 
+<ion-grid>
+        <ion-col *ngFor="let data of pendingData">
+          <ion-card>
+         <div class="img-diplay-mobile">
+           <img  src="{{ data.imageUrl }}" alt="Damage Image 1" class="img-size-mobile" />
+           <img src="{{ data.imageUrl2 }}" alt="Damage Image 2" class="img-size-mobile"/>
+          </div>
+          <div class="label-and-value">
+            <ion-label>Status:</ion-label>
+            <p class="satus">{{ data.status }}</p>
+          </div>
+          <div class="label-and-value">
+            <ion-label>Campus:</ion-label>
+            <p>{{ data.campus }}</p>
+          </div>
+          <div class="label-and-value">
+            <ion-label>Department:</ion-label>
+            <p>{{ data.department }}</p>
+          </div>
+          <div class="label-and-value">
+            <ion-label>Date:</ion-label>
+            <p>{{ data.date }}</p>
+          </div>
+          <div class="label-and-value">
+           <ion-button class="complete-btn" (click)="makeItComplete(data.id)">complete</ion-button>
+          </div>
+         
+
+          
+
+          </ion-card>
+        </ion-col>
+      </ion-grid>
+  
 
 
 </ion-content>

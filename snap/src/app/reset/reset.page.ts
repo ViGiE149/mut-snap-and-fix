@@ -30,7 +30,19 @@ export class ResetPage implements OnInit {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      
       window.alert(errorMessage);
+
+      if(errorMessage=="Firebase: Error (auth/missing-email)."){
+
+      }else if(errorMessage=="Firebase: The email address is badly formatted. (auth/invalid-email)."){
+        window.alert("badly formatted e email");
+      }else if(errorMessage=="Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found)."){
+        window.alert("invalid email");
+      }else{
+        window.alert(errorMessage);
+      }
+
       // ..
     });
   }

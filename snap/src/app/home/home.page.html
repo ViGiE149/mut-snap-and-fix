@@ -1,47 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-
-<div class="centerTitle">
-  <ion-title >  Report     </ion-title>
-    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
-
-  
-
-  
-</div>
-    
-
+    <div class="centerTitle">
+      <ion-title> Report </ion-title>
+      <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-
-
-  
   <ion-card>
-  <ion-label>After capturing image, click done and choose g-mail to finalize report.</ion-label>
-</ion-card>
- <div class="centerImg">
-  <ion-card>
-    <img [src]="newImage" alt="first captured image of the demage">
+    <ion-label
+      >Fill all in fields take 2 images , click done and choose g-mail to finalize
+      report.</ion-label
+    >
   </ion-card>
-  <ion-card>
-    <img [src]="newImage2" alt="second captured image of the demage">
-  </ion-card>
-</div>
-<fieldset>
-  <legend>description</legend>
-  <ion-item>
-    <ion-textarea placeholder="DESCRIBE THE DAMAGE IN DETAIL AND THE LOCATION OF THE INCIDENT" [(ngModel)]="bodyData" [autoGrow]="true"
-      value="">
-    </ion-textarea>
-  </ion-item>
-</fieldset>
+  <div class="centerImg">
+    <ion-card>
+      <img [src]="newImage" alt="first captured image of the demage" />
+    </ion-card>
+    <ion-card>
+      <img [src]="newImage2" alt="second captured image of the demage" />
+    </ion-card>
+  </div>
+  <fieldset>
+    <legend>description</legend>
+    <ion-item>
+      <ion-textarea
+        placeholder="DESCRIBE THE DAMAGE IN DETAIL AND THE LOCATION OF THE INCIDENT"
+        [(ngModel)]="bodyData"
+        [autoGrow]="true"
+        value=""
+      >
+      </ion-textarea>
+    </ion-item>
+  </fieldset>
 
   <ion-list>
     <ion-item class="ion-item-color">
-      <ion-select placeholder="Select Campus"[(ngModel)]="SelectedOption">
+      <ion-select placeholder="Select Campus" [(ngModel)]="SelectedOption">
         <ion-select-option value="Main Campus">Main Campus</ion-select-option>
         <ion-select-option value="North Campus">North Campus</ion-select-option>
       </ion-select>
@@ -50,7 +46,7 @@
 
   <ion-list>
     <ion-item class="ion-item-color">
-      <ion-select placeholder="Select Department"[(ngModel)]="SelectedOption2">
+      <ion-select placeholder="Select Department" [(ngModel)]="SelectedOption2">
         <ion-select-option value="electrical">Electrical</ion-select-option>
         <ion-select-option value="plumbing">Plumbing</ion-select-option>
         <ion-select-option value="capentry">capentry</ion-select-option>
@@ -58,28 +54,19 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  
+
   <div class="block">
-  <ion-fab>
-    <ion-badge>{{counter}}</ion-badge>
-    <ion-fab-button  color="secondary" (click)="takePicture()">
-      <div class="block2">
-   <ion-icon size="large" name="camera"></ion-icon> 
+    <ion-fab>
+      <ion-badge>{{counter}}</ion-badge>
+      <ion-fab-button color="secondary" (click)="takePicture()">
+        <div class="block2">
+          <ion-icon size="large" name="camera"></ion-icon>
+        </div>
+      </ion-fab-button>
+    </ion-fab>
   </div>
-  </ion-fab-button>
-</ion-fab>
-</div>
-  <ion-button expand="block" color="secondary" (click)="done()">DONE</ion-button>
-<br>
-
-
-
-
-
-
-
-
-
+  <ion-button expand="block" color="secondary" (click)="done()"
+    >DONE</ion-button
+  >
+  <br />
 </ion-content>
-
- 

@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'reset',
     loadChildren: () => import('./reset/reset.module').then( m => m.ResetPageModule)
-  },  {
+  },
+  {
     path: 'pending',
     loadChildren: () => import('./pending/pending.module').then( m => m.PendingPageModule)
   },
