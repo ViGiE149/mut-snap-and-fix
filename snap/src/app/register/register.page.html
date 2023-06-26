@@ -1,6 +1,6 @@
 <ion-header class="title">
   <ion-toolbar>
-    <ion-title >REGISTER</ion-title>
+    <ion-title>REGISTER</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,25 +10,42 @@
       <img src="assets\icon.png" alt="" srcset="" />
     </div>
 
-     
-     
-
-  <ion-item fill="solid"> 
-      <ion-icon name="mail"></ion-icon> 
+    <ion-item fill="solid">
+      <ion-icon name="mail"></ion-icon>
       <p>&nbsp;&nbsp;</p>
-    <ion-input [(ngModel)]="email"  type="email" placeholder="EMAIL"></ion-input>
-  </ion-item>
-<br>
-  <ion-item fill="solid" >
+      <ion-input
+        [(ngModel)]="email"
+        type="email"
+        placeholder="EMAIL"
+      ></ion-input>
+    </ion-item>
+    <br />
+    <ion-item fill="solid">
       <ion-icon name="lock-closed"></ion-icon>
       <p>&nbsp;&nbsp;</p>
-    <ion-input [(ngModel)]="password"  type="password" placeholder="PASSWORD"></ion-input>
-  </ion-item>
-<br>
+      <ion-input
+        [(ngModel)]="password"
+        type="password"
+        placeholder="PASSWORD"
+      ></ion-input>
+    </ion-item>
 
-  <ion-button (click)="Reg()" expand="block" color="secondary">SIGN UP</ion-button>
+    <ion-item fill="solid">
+      <ion-icon name="lock-closed"></ion-icon>
+      <p>&nbsp;&nbsp;</p>
+      <ion-input
+        [(ngModel)]="comfirmPassword"
+        type="password"
+        placeholder="CONFIRM PASSWORD"
+      ></ion-input>
+    </ion-item>
+    <br />
 
-  <div
+    <ion-button (click)="Reg()" expand="block" color="secondary"
+      >SIGN UP</ion-button
+    >
+
+    <div
       class="space"
       style="
         width: 100%;
@@ -37,13 +54,21 @@
         text-align: center;
       "
     >
-      <span style="font-size: 30px; background-color: white; padding: 0 10px; color:black">  OR
-        
+      <span
+        style="
+          font-size: 30px;
+          background-color: white;
+          padding: 0 10px;
+          color: black;
+        "
+      >
+        OR
       </span>
     </div>
-<br>
+    <br />
 
-  <ion-button expand="block" color="secondary" routerLink="/login">SIGN IN</ion-button>
-
+    <ion-button expand="block" color="secondary" routerLink="/login"
+      >SIGN IN</ion-button
+    >
   </div>
 </ion-content>

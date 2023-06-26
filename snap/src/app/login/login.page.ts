@@ -52,7 +52,22 @@ export class LoginPage implements OnInit {
           loader.dismiss();
           const errorCode = error.code;
           const errorMessage = error.message;
-          window.alert(errorMessage);
+ 
+          if(errorMessage=="Firebase: Error (auth/missing-email)."){
+
+          }else if(errorMessage=="Firebase: The email address is badly formatted. (auth/invalid-email)."){
+            alert("badly formatted e email");
+          }else if(errorMessage=="Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found)."){
+               alert("invalid email");
+          }else if(errorMessage=="Firebase: Password should be at least 6 characters (auth/weak-password)."){
+            alert("Password should be at least 6 characters");
+          }else if(errorMessage=="Firebase: The email address is already in use by another account. (auth/email-already-in-use)."){
+            alert("invalid email or password");
+          }
+          else{
+            window.alert(errorMessage);
+          }
+  
 
         });
 
