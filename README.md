@@ -65,5 +65,4 @@ Admins can update the status of reported damages.
 Contributing
 Contributions are welcome! If you encounter issues or have suggestions, please open an issue or create a pull request.
 
-License
-This project is licensed under the MIT License.
+
