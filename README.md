@@ -29,20 +29,18 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/snap-and-fix.git
+git clone https://github.com/ViGiE149/mut-snap-and-fix
 cd snap-and-fix
+cd snap
 Install Dependencies:
 
-bash
-Copy code
 npm install
 Configure Firebase:
 
 Set up a Firebase project and configure the app with your Firebase credentials in src/environments/environment.ts.
 Run the App Locally:
 
-bash
-Copy code
+
 ionic serve
 Build for Native Platforms:
 
@@ -53,6 +51,8 @@ npx cap add android
 npx cap add ios
 npx cap copy
 npx cap open android  # or ios
+
+
 Usage
 User Flow:
 
