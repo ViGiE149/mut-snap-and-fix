@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./students/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -25,31 +25,31 @@ const routes: Routes = [
   },
   {
     path: 'pending',
-    loadChildren: () => import('./pending/pending.module').then( m => m.PendingPageModule)
+    loadChildren: () => import('./Admin/pending/pending.module').then( m => m.PendingPageModule)
   },
   {
     path: 'reported',
-    loadChildren: () => import('./reported/reported.module').then( m => m.ReportedPageModule)
+    loadChildren: () => import('./Admin/reported/reported.module').then( m => m.ReportedPageModule)
   },
   {
     path: 'completed',
-    loadChildren: () => import('./completed/completed.module').then( m => m.CompletedPageModule)
+    loadChildren: () => import('./Admin/completed/completed.module').then( m => m.CompletedPageModule)
   },
   {
     path: 'dashboard-admin',
-    loadChildren: () => import('./dashboard-admin/dashboard-admin.module').then( m => m.DashboardAdminPageModule)
+    loadChildren: () => import('./Admin/dashboard-admin/dashboard-admin.module').then( m => m.DashboardAdminPageModule)
   },
   {
     path: 'my-reports',
-    loadChildren: () => import('./my-reports/my-reports.module').then( m => m.MyReportsPageModule)
+    loadChildren: () => import('./students/my-reports/my-reports.module').then( m => m.MyReportsPageModule)
   },
   {
     path: 'attended',
-    loadChildren: () => import('./attended/attended.module').then( m => m.AttendedPageModule)
+    loadChildren: () => import('./students/attended/attended.module').then( m => m.AttendedPageModule)
   },
   {
     path: 'in-progress',
-    loadChildren: () => import('./in-progress/in-progress.module').then( m => m.InProgressPageModule)
+    loadChildren: () => import('./students/in-progress/in-progress.module').then( m => m.InProgressPageModule)
   },
 
 ];

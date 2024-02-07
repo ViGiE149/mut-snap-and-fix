@@ -30,43 +30,36 @@
       ></ion-input>
     </ion-item>
 
-    <ion-item fill="solid">
+    <ion-item class="move" fill="solid">
       <ion-icon name="lock-closed"></ion-icon>
       <p>&nbsp;&nbsp;</p>
       <ion-input
-        [(ngModel)]="comfirmPassword"
+        [(ngModel)]="confirmPassword"
         type="password"
         placeholder="CONFIRM PASSWORD"
       ></ion-input>
     </ion-item>
     <br />
 
-    <ion-button (click)="Reg()" expand="block" color="secondary"
+    <ion-button (click)="Reg()" expand="block" 
       >SIGN UP</ion-button
     >
-
-    <div
-      class="space"
-      style="
-        width: 100%;
-        height: 20px;
-        border-bottom: 1px solid black;
-        text-align: center;
-      "
-    >
-      <span
-        style="
-          font-size: 30px;
-          background-color: white;
-          padding: 0 10px;
-          color: black;
-        "
-      >
-        OR
-      </span>
-    </div>
-    <br />
-
+    <!-- <ion-button (click)="Reg()" expand="block" 
+    >Google</ion-button
+  > -->
+  <div
+  class="space"
+  style="
+    width: 100%;
+    height: 15px;
+    border-bottom: 1px solid black;
+    text-align: center;
+  "
+>
+  <span style="font-size: 20px; background-color: white; padding: 0 10px; color:black">  OR
+    
+  </span>
+</div>
     <ion-button expand="block" color="secondary" routerLink="/login"
       >SIGN IN</ion-button
     >

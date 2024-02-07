@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DamageDataService } from 'src/app/services/damage-data.service';
 
 @Component({
   selector: 'app-my-reports',
@@ -8,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class MyReportsPage implements OnInit {
   damageData:any;
-  constructor(private db: AngularFirestore) {
+  constructor(private damageDataService: DamageDataService) {
     this. getDamageData();
     
    
@@ -21,19 +22,11 @@ export class MyReportsPage implements OnInit {
 
 
   getDamageData() {
+    const email = localStorage.getItem('email') || "";
 
-    var email=localStorage.getItem('email');
-
-    this.db.collection('damageData', ref => 
-    ref.where('status', '==', 'damaged').where('email', '==', email))
-    .valueChanges()
-    .subscribe(data =>{
-    
-  this.damageData = data;  
-    
-  });
-
-      
+    this.damageDataService.getReportsByEmail('damaged', email).subscribe((data) => {
+      this.damageData = data;
+    });
   }
 
 }

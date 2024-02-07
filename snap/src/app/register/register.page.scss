@@ -1,30 +1,97 @@
-space{
-    margin-bottom: 30px;
-    margin-top: 10px;
-}
-.title{
-    text-align: center;
-    font-size: 35px;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: oblique;
-}
-ion-content{
-
-    --ion-background-color:white;
-  }
-  ion-toolbar{
-    --background: white;
-  }
-  ion-title{
-    color: black;
-  }
-  ion-item {
-    --ion-item-background: white;
-  }
-  .center{
-    text-align: center;
-}.container{
-
-  margin-left:20px ;
+.container {
+  margin-left: 20px;
   margin-right: 20px;
 }
+
+.space {
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+img {
+  width: 300px;
+  height: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+ion-item {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+.exitIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  text-align: center;
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: oblique;
+  color: #333; /* Set your preferred color */
+}
+
+ion-content {
+  --ion-background-color: #f4f4f4; /* Set your preferred background color */
+}
+
+ion-toolbar {
+  --background: #fff; /* Set your preferred toolbar background color */
+  --border-color: #ddd; /* Set your preferred toolbar border color */
+}
+
+ion-title {
+  color: #333; /* Set your preferred title color */
+}
+
+ion-item {
+  border-radius: 8px; /* Set border radius */
+  background-color: #fff; /* Set background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+}
+
+.forgotPass {
+  margin: -13px 0 10px -10px;
+  color: #777; /* Set your preferred text color */
+}
+
+.custom-loader-class {
+  --background: #fff; /* Set your loader background color */
+  --border-radius: 20px;
+  --color: #333; /* Set your loader text color */
+}
+
+ion-button {
+  --background: #4CAF50; /* Set your button background color */
+  --color: #fff; /* Set your button text color */
+  border-radius: 8px; /* Set button border radius */
+  margin-bottom: 15px;
+}
+
+.space-bar {
+  width: 100%;
+  height: 15px;
+  border-bottom: 1px solid #333; /* Set your preferred border color */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.or-text {
+  font-size: 20px;
+  background-color: #fff;
+  padding: 0 10px;
+  color: #333; /* Set your preferred text color */
+}
+ion-title{
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+

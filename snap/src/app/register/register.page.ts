@@ -11,86 +11,92 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  email = '';
+  password = '';
+  confirmPassword = '';
 
-  email = "";
-  password = "";
-  comfirmPassword="";
+  constructor(
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private router: Router,
+    private auth: AngularFireAuth,
+    private toastController: ToastController
+  ) {}
 
-  constructor(private alertController: AlertController, private loadingController: LoadingController,
-     private router: Router, private auth: AngularFireAuth, private toastController: ToastController) { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async Reg() {
-    if(this.email==""){
-      alert("enter email");
-      return
-    }
-    if(this.password==""){
-      alert("enter password");
-      return
-    }
-     if(this.comfirmPassword==""){
-      alert("enter comfirm password");
-      return
-     }
-
-     if( this.password !== this.comfirmPassword){
-      alert("passwords do not match")
-      return
-     }
-    
-     
-
-     
-    const loader = await this.loadingController.create({
-      message: 'Signing up',
-      cssClass: 'custom-loader-class'
-    });
-    await loader.present();
-
-
-
-
-
-    this.auth.createUserWithEmailAndPassword(this.email, this.password)
-      .then(userCredential => {
-        loader.dismiss();
-
-        this.router.navigateByUrl("/login");
-        this.presentToast()
-        // ...
-      })
-      .catch((error) => {
-        loader.dismiss();
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        if(errorMessage=="Firebase: Error (auth/missing-email)."){
-
-        }else if(errorMessage=="Firebase: The email address is badly formatted. (auth/invalid-email)."){
-          alert("badly formatted e email");
-        }else if(errorMessage=="Firebase: The email address is already in use by another account. (auth/email-already-in-use)."){
-          alert("invalid email or password");
-        }
-        else if(errorMessage=="Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found)."){
-          alert("invalid email");
-        }else{
-          alert(errorMessage);
-        }
-
+    if (this.validateInputs()) {
+      const loader = await this.loadingController.create({
+        message: 'Signing up',
+        cssClass: 'custom-loader-class',
       });
+
+      try {
+        await loader.present();
+        await this.auth.createUserWithEmailAndPassword(this.email, this.password);
+        loader.dismiss();
+        this.router.navigateByUrl('/login');
+        this.presentToast('Successfully registered!');
+      } catch (error) {
+        loader.dismiss();
+        const errorMessage = this.getErrorMessage(error);
+        if (errorMessage) {
+          alert(errorMessage);
+        } else {
+          window.alert('An unexpected error occurred.');
+        }
+      }
+    }
   }
 
-  async presentToast() {
+  validateInputs(): boolean {
+    if (!this.email) {
+      alert('Enter email');
+      return false;
+    }
+
+    if (!this.password) {
+      alert('Enter password');
+      return false;
+    }
+
+    if (!this.confirmPassword) {
+      alert('Enter confirm password');
+      return false;
+    }
+
+    if (this.password !== this.confirmPassword) {
+      alert('Passwords do not match');
+      return false;
+    }
+
+    return true;
+  }
+
+  getErrorMessage(error: any): string | undefined {
+    switch (error.code) {
+      case 'auth/missing-email':
+        return 'Email is required';
+      case 'auth/invalid-email':
+        return 'Invalid email format';
+      case 'auth/email-already-in-use':
+        return 'Email already in use';
+      case 'auth/user-not-found':
+        return 'Invalid email';
+      default:
+        return error.message || 'An unexpected error occurred';
+    }
+  }
+
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'successfully registered!',
+      message: message,
       duration: 1500,
-      position: 'top'
+      position: 'top',
     });
 
+    await toast.present();
   }
-
 }
 

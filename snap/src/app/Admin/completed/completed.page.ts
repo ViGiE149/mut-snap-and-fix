@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { map, Observable } from 'rxjs';
+import { DamageDataService } from 'src/app/services/damage-data.service';
+
 
 @Component({
   selector: 'app-completed',
@@ -10,27 +10,17 @@ import { map, Observable } from 'rxjs';
 })
 export class CompletedPage implements OnInit {
   completedData:any;
-  constructor(private db: AngularFirestore) {
+  constructor(private damageDataService: DamageDataService) {
     this.getCompletedData()
    }
 
   ngOnInit() {
   }
 
-
   getCompletedData() {
-
-    this.db.collection('damageData', ref => ref.where('status', '==', 'completed'))
-      .valueChanges()
-      .subscribe(data =>{
-        
-      this.completedData=data;  
+    this.damageDataService.getDamageDataByStatus('completed').subscribe((data) => {
+      this.completedData = data;
       console.log(data);
-
-  }); 
-
-}
-
-
-
+    });
+  }
 }

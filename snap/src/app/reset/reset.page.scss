@@ -1,42 +1,55 @@
-.title{
-    text-align: center;
-    font-size: 35px;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: oblique;
-}
-.container{
-    margin-left: 20px;
-    margin-right: 20px;
+.title {
+  text-align: center;
+  font-size: 35px;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: oblique;
 }
 
-ion-item{
-    margin-bottom:10px; 
+.container {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-img{
-    height: 250px;
-    width:300px;
-    
+ion-item {
+  margin-bottom: 10px;
 }
 
-.center{
-    text-align: center;
+img {
+  height: 250px;
+  width: 300px;
+  display: block;
+  margin: 0 auto;
 }
 
-ion-button{
-    margin-bottom: 10px;
+.center {
+  text-align: center;
 }
-ion-content{
 
-    --ion-background-color:white;
-  }
-  ion-toolbar{
-    --background:  white;
-  }
-  ion-title{
-    color: black;
-  }
-  ion-item {
-    --ion-item-background: white;
-  }
+ion-button {
+  margin-bottom: 10px;
+  --background: #4CAF50;
+  border-radius: 8px; /* Set border radius for buttons */
+}
+
+ion-content {
+  --ion-background-color: white;
+}
+
+ion-toolbar {
+  --background: white;
+}
+
+ion-title {
+  color: black;
+}
+
+ion-item {
+  --ion-item-background: white;
+}
+
+ion-button {
+  --background: #4CAF50; /* Set your preferred button background color */
+  --color: #fff; /* Set your preferred button text color */
+  border-radius: 8px; /* Set border radius for buttons */
+}
 
