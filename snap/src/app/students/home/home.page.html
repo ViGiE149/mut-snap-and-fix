@@ -1,17 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <div class="centerTitle">
+   
       <ion-title> Report </ion-title>
       <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
-    </div>
+   
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-card>
-    <ion-label
-      >Fill in the fields, take two images, click "Done," and choose Gmail to finalize the report.</ion-label
-    >
+    <ion-label>
+      Fill in the fields, take at least two clear images, select the department and campus, and provide a detailed description of the damage and its location.
+    </ion-label>
+   
   </ion-card>
   <div class="centerImg">
     <ion-card>
@@ -37,6 +38,7 @@
   <ion-list>
     <ion-item class="ion-item-color">
       <ion-select placeholder="Select Campus" [(ngModel)]="SelectedOption">
+        <ion-select-option value="">Select Department</ion-select-option>
         <ion-select-option value="Main Campus">Main Campus</ion-select-option>
         <ion-select-option value="North Campus">North Campus</ion-select-option>
       </ion-select>
@@ -46,6 +48,7 @@
   <ion-list>
     <ion-item class="ion-item-color">
       <ion-select placeholder="Select Department" [(ngModel)]="SelectedOption2">
+        <ion-select-option value="">Select Department</ion-select-option>
         <ion-select-option value="electrical">Electrical</ion-select-option>
         <ion-select-option value="plumbing">Plumbing</ion-select-option>
         <ion-select-option value="capentry">capentry</ion-select-option>
