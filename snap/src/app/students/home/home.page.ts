@@ -96,7 +96,6 @@ export class HomePage {
       const alert = await this.alertController.create({
         header: 'Alert',
         subHeader: 'Important message',
-        cssClass: 'my-custom-alert',
         message: 'Capture 2 images of the damage, fill in the description, choose campus and choose department!',
         buttons: ['OK'],
       });
@@ -138,31 +137,15 @@ export class HomePage {
           status: 'damaged',
           email: this.email
         })
-        .then((docRef) => {
+        .then(async (docRef) => {
           loader.dismiss();
           console.log('Document written with ID: ', docRef.id);
           alert('Uploaded ' + docRef.id + '\n' + 'Complete action by clicking send');
 
-          const email = {
-            to: 'vgwala149@gmail.com',
-            attachments: [`base64:image.jpeg//${this.imageInfor}`],
-            subject: 'Damage Report',
-            body:
-              'Campus: ' +
-              this.SelectedOption +
-              '.' +
-              '\n' +
-              'Department: ' +
-              this.SelectedOption2 +
-              '.' +
-              '\n' +
-              '\n' +
-              this.bodyData,
-            app: 'gmail',
-            isHtml: false,
-          };
-
-          this.emailComposer.open(email);
+        
+          await this.sendEmailUsingPhp();
+          loader.dismiss();
+          alert("report sent successfully");
 
           this.imageInfor = '';
           this.imageInfor2 = '';
@@ -187,6 +170,42 @@ export class HomePage {
   done() {
     this.validate();
   }
+
+
+  async sendEmailUsingPhp() {
+    const url = 'http://localhost/phpMailer/send_email.php';
+    
+    const emailData = {
+        subject: 'Damage Report',
+        recipient: 'vgwala149@gmail.com',
+        body: `Campus: ${this.SelectedOption}\nDepartment: ${this.SelectedOption2}\nDescription: ${this.bodyData}`,
+        urlArrays: [this.imageUrl, this.imageUrl2],
+    };
+
+    try {
+        const response = await fetch(`${url}?subject=${encodeURIComponent(emailData.subject)}&recipient=${encodeURIComponent(emailData.recipient)}&body=${encodeURIComponent(emailData.body)}&urlArrays=${encodeURIComponent(emailData.urlArrays.join(','))}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorMessage = await response.json();
+            throw new Error(errorMessage.message || 'Failed to send email');
+        }
+        
+        const result = await response.json();
+        console.log('Email sent successfully:', result);
+        alert('Email sent successfully');
+    } catch (error) {
+        console.error('Error during email sending:', error);
+        alert('An error occurred while sending the email');
+    }
+}
+
+
+
 
   logout() {
     this.presentConfirmationAlert();
@@ -231,3 +250,6 @@ export class HomePage {
     await alert.present();
   }
 }
+
+
+
