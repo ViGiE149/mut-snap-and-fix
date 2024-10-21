@@ -54,10 +54,10 @@ $mail->SMTPSecure = "tls";
 $mail->Port = "587";
 
 // Set the Gmail username
-$mail->Username = "mutcoopdepartment@gmail.com";
+$mail->Username = "snapfix02@gmail.com";
 
 // Set the Gmail password
-$mail->Password = "jhyuortrhmyxpxcc";
+$mail->Password = "mwqkhvqlbsqwnbmb";
 
 // Set the email subject
 $mail->Subject = $subject;
